@@ -92,6 +92,7 @@ Expression* ParserFormalArithmetic::parse_predicate() {
         return new Predicate(expression.substr(start_index, finish_index - start_index), terms);
     }
     Expression *left = parse_term();
+    index++;
     Expression *right = parse_term();
     return new Equality(left, right);
 }
