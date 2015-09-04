@@ -23,7 +23,6 @@ struct HW4 {
 
         std::string statement;
         getline(std::cin, statement);
-        std::cerr << statement << '\n';
         ProofDeduction::get_instance()->add_header(statement);
         std::vector<Expression*> result;
         int counter = 0;

@@ -42,10 +42,10 @@ void ProofDeduction::add_header(std::string s) {
     breaker = s.rfind(';', s.size() - 1);
     proposal_string = s.substr(breaker + 1, breaker_old - breaker - 1);
     proposal = parse_expression(proposal_string);
+    std::cerr << proposal_string;
     proposal_free_variables = proposal->get_variables();
     breaker_old = breaker;
-    while (breaker != 0)
-    {
+    while (breaker != 0) {
         breaker = s.rfind(';', breaker_old - 1);
         assumptions.emplace_back(parse_expression(s.substr(breaker + 1, breaker_old - breaker - 1)));
         breaker_old = breaker;
