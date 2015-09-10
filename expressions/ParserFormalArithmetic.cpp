@@ -81,7 +81,6 @@ Expression* ParserFormalArithmetic::parse_predicate() {
         size_t finish_index = index;
         std::vector<Expression*> terms;
         if (expression[index] == '(') {
-            index++;
             while (index < expression.size() && expression[index] != ')') {
                 index++;
                 Expression *term = parse_term();

@@ -42,7 +42,6 @@ void ProofDeduction::add_header(std::string s) {
     breaker = s.rfind(';', s.size() - 1);
     proposal_string = s.substr(breaker + 1, breaker_old - breaker - 1);
     proposal = parse_expression(proposal_string);
-    std::cerr << proposal_string;
     proposal_free_variables = proposal->get_variables();
     breaker_old = breaker;
     while (breaker != 0) {
@@ -66,7 +65,7 @@ void ProofDeduction::add_self_proof(std::vector<Expression *> &result) {
 
 void ProofDeduction::add_axiom_proof(Expression *expression, std::vector<Expression*> &result) {
     result.emplace_back(expression);
-    result.emplace_back(parse_expression("(" + expression->to_string() + ")->((" + proposal_string + ")->(" + expression->to_string() + ")"));
+    result.emplace_back(parse_expression("(" + expression->to_string() + ")->((" + proposal_string + ")->(" + expression->to_string() + "))"));
 }
 
 void ProofDeduction::add_modus_ponens_proof(Expression *expression, std::vector<Expression*> &result) {
@@ -106,16 +105,14 @@ void ProofDeduction::add_rule_exists_proof(Expression *expression, std::vector<E
     new_result.clear();
     B = reinterpret_cast<ExistsQuantifier*>(implication->left)->to_string();
     result.emplace_back(parse_expression(B + "->" + A + "->" + C));
-    proof_deduction.add_header(B + "->" + A + "->" + C + ";"
-                  + A + ";" + B + "|-" + C);
+    proof_deduction.add_header(B + "->" + A + "->" + C + ";" + A + ";" + B + "|-" + C);
     proof_deduction.add_proof(B + "->" + A + "->" + C, new_result);
     proof_deduction.add_proof(B, new_result);
     proof_deduction.add_proof(A + "->" + C, new_result);
     proof_deduction.add_proof(A, new_result);
     proof_deduction.add_proof(C, new_result);
     proof_deduction.clear();
-    proof_deduction.add_header(B + "->" + A + "->" + C + ";"
-                  + A + "|-" + B + "->" + C);
+    proof_deduction.add_header(B + "->" + A + "->" + C + ";" + A + "|-" + B + "->" + C);
     for (auto item : new_result) {
         proof_deduction.add_proof(item, result);
     }
@@ -131,8 +128,7 @@ void ProofDeduction::add_rule_forall_proof(Expression *expression, std::vector<E
     std::string C = reinterpret_cast<ForallQuantifier*>(implication->right)->next->to_string();
     ProofDeduction proof_deduction = ProofDeduction();
     std::string AaB = "(" + A + "&" + B + ")";
-    proof_deduction.add_header(A + "->" + B + "->" + C + ";" +
-                  AaB + "|-" + C);
+    proof_deduction.add_header(A + "->" + B + "->" + C + ";" + AaB + "|-" + C);
     proof_deduction.add_proof(AaB + "->" + A, result);
     proof_deduction.add_proof(AaB + "->" + B, result);
     proof_deduction.add_proof(AaB, result);
@@ -189,6 +185,7 @@ void ProofDeduction::add_proof(Expression *expression, std::vector<Expression*> 
 
 bool ProofDeduction::add_proof(const std::string &expression_string, std::vector<Expression*> &result) {
     Expression *eptr(parse_expression(expression_string));
+    std::cerr << proposal_string << " " << expression_string << '\n';
     if (proposal->equals(eptr) ||
         get_assumption(eptr) != -1 ||
         proof_checker.get_arithmetic_axiom(eptr) != -1 ||
@@ -230,7 +227,7 @@ bool ProofDeduction::add_proof(const std::string &expression_string, std::vector
         add_proof(eptr, result);
         return true;
     }
-    std::cerr << "Proofment to nepravil'noe" << "\n";
+    std::cerr << "Proofment is wrong" << "\n";
     std::cerr << eptr->to_string() << "\n";
     return false;
 }

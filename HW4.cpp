@@ -28,7 +28,7 @@ struct HW4 {
         int counter = 0;
         while (getline(std::cin, statement)) {
             if (!ProofDeduction::get_instance()->add_proof(statement, result)) {
-                std::cout << "Вывод некорректен начиная с формулы номер " << counter << "\n";
+                std::cout << "Вывод некорректен начиная с формулы номер " << counter + 1 << "\n";
                 std::cout << ProofDeduction::get_instance()->get_error() << "\n";
                 return;
             }

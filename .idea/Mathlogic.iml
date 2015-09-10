@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW1.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW2.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW3.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/HW4.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ProofChecker.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ProofChecker.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ProofDeduction.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ProofDeduction.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Utils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Utils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Add.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/And.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Equality.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/ExistsQuantifier.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Expressions.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Expressions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/ForallQuantifier.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Implication.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Multiply.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Not.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Or.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Parser.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Parser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/ParserFormalArithmetic.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/ParserFormalArithmetic.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Predicate.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/expressions/Variable.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/cilk" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/sanitizer" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/cilk" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include/sanitizer" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

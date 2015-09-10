@@ -280,7 +280,6 @@ size_t Expressions::ArgumentsHandler::hash() {
 std::vector<std::string> Expressions::ArgumentsHandler::get_variables() {
     std::vector<std::string> result;
     for (size_t i = 0; i < terms.size(); i++) {
-        std::cerr << typeid(terms[i]).name() << '\n';
         std::vector<std::string> new_variables = terms[i]->get_variables();
         result.insert(result.end(), new_variables.begin(), new_variables.end());
     }
