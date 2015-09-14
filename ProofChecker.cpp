@@ -66,7 +66,7 @@ void ProofChecker::clear() {
 
 void ProofChecker::add_expression(Expression *expression) {
     expressions.emplace_back(expression);
-    expression_hashes[expression->hash()] = expressions.size() - 1;
+    expression_hashes.insert(std::make_pair(expression, expressions.size() - 1));
 }
 
 bool ProofChecker::is_axiom(Expression *axiom, Expression *expression) {
@@ -84,7 +84,7 @@ int ProofChecker::get_axiom(Expression *expression) {
 }
 
 int ProofChecker::find_expression(Expression *expression) {
-    auto it = expression_hashes.find(expression->hash());
+    auto it = expression_hashes.find(expression);
     if (it == expression_hashes.end()) {
         return -1;
     }
@@ -237,8 +237,12 @@ std::pair<size_t, size_t> ProofChecker::get_modus_ponens(Expression *expression)
         Expression *approve = expressions[i];
         if (check_class_inherity<Implication>(*approve)) {
             Implication *implication_approve = static_cast<Implication*>(approve);
+            /*std::cerr << implication_approve->right->to_string() << ' ';
+            std::cerr << expression->to_string() << '\n';
+            std::cerr << "hash: " << implication_approve->right->hash() << ' ' << expression->hash() << '\n';
+            std::cerr << "equals: " << implication_approve->right->equals(expression) << '\n';*/
             if (implication_approve->right->hash() == expression->hash() && implication_approve->right->equals(expression)) {
-                auto it = expression_hashes.find(implication_approve->left->hash());
+                auto it = expression_hashes.find(implication_approve->left);
                 if (it != expression_hashes.end()) {
                     return std::make_pair(i, it->second);
                 }

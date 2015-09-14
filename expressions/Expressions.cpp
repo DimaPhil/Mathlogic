@@ -190,8 +190,8 @@ bool Expressions::Quantifier::equals(Expression *expression) {
         return false;
     }
     Quantifier *quantifier_expression = reinterpret_cast<Quantifier*>(expression);
-    return quantifier_expression->operation == operation &&
-           quantifier_expression->variable == variable &&
+    return operation == quantifier_expression->operation &&
+           variable->equals(quantifier_expression->variable) &&
            next->equals(quantifier_expression->next);
 }
 

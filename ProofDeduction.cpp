@@ -33,7 +33,7 @@ void ProofDeduction::add_header(std::string s) {
     clear();
     size_t breaker = s.find("|-", 0);
     if (breaker == std::string::npos) {
-        std::cerr << "Syntax error in proposal" << "\n";
+        std::cerr << "Syntax error in proposal expression" << "\n";
         exit(-1);
     }
     size_t breaker_old = breaker;
@@ -185,7 +185,7 @@ void ProofDeduction::add_proof(Expression *expression, std::vector<Expression*> 
 
 bool ProofDeduction::add_proof(const std::string &expression_string, std::vector<Expression*> &result) {
     Expression *eptr(parse_expression(expression_string));
-    std::cerr << proposal_string << " " << expression_string << '\n';
+    //std::cerr << "New string: " << proposal_string << ' ' << eptr->to_string() << '\n';
     if (proposal->equals(eptr) ||
         get_assumption(eptr) != -1 ||
         proof_checker.get_arithmetic_axiom(eptr) != -1 ||

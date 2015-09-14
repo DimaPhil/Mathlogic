@@ -35,7 +35,7 @@ struct HW4 {
             counter++;
         }
         for (auto item : result) {
-            std::cout << item->to_string() << "\n";
+            std::cout << Utils::replace(item->to_string(), ">", "->") << "\n";
         }
     }
 

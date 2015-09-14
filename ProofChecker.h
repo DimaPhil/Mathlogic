@@ -5,6 +5,7 @@
 #include <map>
 #include <algorithm>
 #include <vector>
+#include <unordered_map>
 
 using Expressions::Expression;
 
@@ -17,6 +18,18 @@ bool check_class_inherity(Derived &derived) {
         return false;
     }
 }
+
+struct HashEquals {
+    size_t operator ()(Expression *expression) const {
+        return expression->hash();
+    }
+};
+
+struct ExpressionEquals {
+    bool operator ()(Expression *first, Expression *second) const {
+        return first->equals(second);
+    }
+};
 
 struct PredicateResult {
     Expression *not_free_term;
@@ -36,7 +49,7 @@ struct ProofChecker {
     friend class Predicate;
 
     std::vector<Expression *> expressions;
-    std::map<size_t, size_t> expression_hashes;
+    std::unordered_map<Expression*, size_t, HashEquals, ExpressionEquals> expression_hashes;
     static std::vector<Expression *> axioms;
     static std::vector<Expression *> arithmetic_axioms;
     static std::map<std::string, Expression *> variables;
